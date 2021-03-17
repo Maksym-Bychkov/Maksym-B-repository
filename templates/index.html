@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>ATM Log Parser</title>
+{% endblock %}
+
+{% block body %}
+
+    {% if content|length < 1 %}
+        <h4>There are no data!</h4>
+    {% else %}
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">ATM Log Parser</h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <table id="example2" class="table table-bordered table-hover">
+                  <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>PAN</th>
+                    <th>Amount</th>
+                    <th>Time</th>
+                    <th>Auth.code</th>
+                    <th>Cassette 1 count</th>
+                    <th>Cassette 2 count</th>
+                    <th>Cassette 3 count</th>
+                    <th>Cassette 4 count</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                    {% for recording in content %}
+                        <tr>
+                            <td>{{ recording.ID }}</td>
+                            <td>{{ recording.PAN }}</td>
+                            <td>{{ recording.Amount }}</td>
+                            <td>{{ recording.Time }}</td>
+                            <td>{{ recording.Auth_code }}</td>
+                            <td>{{ recording.Cassette_1_count }}</td>
+                            <td>{{ recording.Cassette_2_count }}</td>
+                            <td>{{ recording.Cassette_3_count }}</td>
+                            <td>{{ recording.Cassette_4_count }}</td>
+                        </tr>
+                    {% endfor %}
+                  </tbody>
+                  <tfoot>
+                  <tr>
+                    <th>ID</th>
+                    <th>PAN</th>
+                    <th>Amount</th>
+                    <th>Time</th>
+                    <th>Auth.code</th>
+                    <th>Cassette 1 count</th>
+                    <th>Cassette 2 count</th>
+                    <th>Cassette 3 count</th>
+                    <th>Cassette 4 count</th>
+                  </tr>
+                  </tfoot>
+                </table>
+              </div>
+
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+      </div>
+      <!-- /.container-fluid -->
+    </section>
+    {% endif %}
+{% endblock %}
